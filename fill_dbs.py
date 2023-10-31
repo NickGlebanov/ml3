@@ -149,30 +149,30 @@ class MockDataGenerator:
 
 
 
-#for printer in MockDataGenerator.printer_model_list:
-#    insert_product(random.choice(MockDataGenerator.maker_list), printer, "'PRINTER'")
-#    insert_printer(*MockDataGenerator().rand_printer(printer))
-#
-#for pc in MockDataGenerator.pc_model_list:
-#    insert_product(random.choice(MockDataGenerator.maker_list), pc, "'PC'")
-#    insert_pc(*MockDataGenerator().rand_pc(pc))
-#
-#for laptop in MockDataGenerator.laptop_model_list:
-#    insert_product(random.choice(MockDataGenerator.maker_list), laptop, "'LAPTOP'")
-#    insert_laptop(*MockDataGenerator().rand_laptop(laptop))
-#
-#
-#for only_pc in range(3100,3140):
-#    insert_product("'TECNO'", only_pc, "'PC'")
-#    insert_pc(*MockDataGenerator().rand_pc(pc))
-#
+for printer in MockDataGenerator.printer_model_list:
+    insert_product(random.choice(MockDataGenerator.maker_list), printer, "'PRINTER'")
+    insert_printer(*MockDataGenerator().rand_printer(printer))
 
-## insert_product("'TECNO'", 7777, "'PC'")
+for pc in MockDataGenerator.pc_model_list:
+    insert_product(random.choice(MockDataGenerator.maker_list), pc, "'PC'")
+    insert_pc(*MockDataGenerator().rand_pc(pc))
+
+for laptop in MockDataGenerator.laptop_model_list:
+    insert_product(random.choice(MockDataGenerator.maker_list), laptop, "'LAPTOP'")
+    insert_laptop(*MockDataGenerator().rand_laptop(laptop))
+
+
+for only_pc in range(3100,3140):
+    insert_product("'TECNO'", only_pc, "'PC'")
+    insert_pc(*MockDataGenerator().rand_pc(pc))
+
+
+insert_product("'TECNO'", 7777, "'PC'")
 duplicate_pc = MockDataGenerator().rand_pc(7777)
-for duplicate in range(4100, 4100):
+for duplicate in range(4100, 4150):
     insert_pc(*duplicate_pc)
 
-# insert_product("'HP'", 9999, "'LAPTOP'")
+insert_product("'HP'", 9999, "'LAPTOP'")
 duplicate_laptop = MockDataGenerator().rand_laptop(9999)
 for duplicate in range(4300, 4350):
     insert_laptop(*duplicate_laptop)

@@ -15,4 +15,24 @@ GROUP BY maker
 HAVING count(*) = 1
 
 
-select * from laptop ORDER BY model desc
+# Загрязните специально датасет (вставьте новые значения с уникальным кодом, но всеми остальными дублирующими полями). (смотреть файл fill_dbs.py)
+# Напишите оконную функцию, которая поможет вам обнаружить эти строки-редиски.
+select code from
+(select code, model ,ROW_NUMBER() over  (partition by model, speed,ram,hd,cd,price) as rcount from pc)
+WHERE rcount > 1;
+
+select code from
+(select code, model ,ROW_NUMBER() over  (partition by model, speed,ram,hd,price,screen) as rcount from laptop)
+WHERE rcount > 1;
+
+
+# Обновите название колонки в таблице printer с color на color_type и поменяйте тип поля.
+ALTER TABLE printer RENAME COLUMN color TO color_type;
+ALTER TABLE printer ALTER COLUMN color_type TYPE VARCHAR(100);
+
+# В последнем пункте выполните слияние двух запросов из таблиц PC и Laptop, выбрав только те значения, у которых цена больше 500, а ram = 64.
+select * from
+(select code, ram, price from laptop
+UNION
+select code, ram, price from pc)
+where price > 500 and ram = 64
